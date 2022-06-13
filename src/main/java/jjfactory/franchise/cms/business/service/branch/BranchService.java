@@ -8,4 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class BranchService {
+    public String create(){
+        return "Y";
+    }
+
+    public String update(Long id){
+        return "Y";
+    }
+
+    public String delete(Long id){
+        return "Y";
+    }
 }
