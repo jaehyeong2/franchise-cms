@@ -1,5 +1,6 @@
 package jjfactory.franchise.cms.business.domain.branch;
 
+import jjfactory.franchise.cms.business.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,7 @@ import javax.persistence.Id;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Branch {
-
+public class Branch extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 }

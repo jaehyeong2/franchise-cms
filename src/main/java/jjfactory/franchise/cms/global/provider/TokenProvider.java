@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jjfactory.franchise.cms.business.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,10 +45,7 @@ public class TokenProvider {
 
 
     // 토큰을 만들장
-    public String createToken(String userId, List<String> roles){
-
-
-
+    public String createToken(String userId, List<Role> roles){
         // Claims 란 jwt 바디 부분
         // 바디부분에 유저에 대한 정보를 넣는다
         Claims claims = Jwts.claims().setSubject(userId);
