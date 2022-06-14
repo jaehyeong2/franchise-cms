@@ -5,6 +5,7 @@ import jjfactory.franchise.cms.business.domain.branch.Branch;
 import jjfactory.franchise.cms.business.domain.user.Role;
 import jjfactory.franchise.cms.business.domain.user.User;
 import jjfactory.franchise.cms.business.dto.admin.AdminCreateDto;
+import jjfactory.franchise.cms.business.dto.admin.AdminUpdateDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -76,5 +77,16 @@ public class Admin extends User {
                 .useYN("1")
                 .roles(Collections.singletonList(Role.ROLE_ADMIN))
                 .build();
+    }
+
+    public void updateBranch(Branch branch){
+        this.branch = branch;
+    }
+
+    public void updateTotal(AdminUpdateDto dto, AdminCode code){
+        this.email = dto.getEmail();
+        this.name = dto.getName();
+        this.phone = dto.getPhone();
+        this.code = code;
     }
 }
