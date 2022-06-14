@@ -40,7 +40,7 @@ public class Admin extends User {
     private String modifyAdmin;
 
 
-    @Builder
+    @Builder(builderMethodName = "adminBuilder")
     public Admin(Long id, String username, String password, String useYN, LocalDateTime lastLoginDate, List<Role> roles, Long id1, AdminCode code, Branch branch, String name, String phone, String email, String createAdmin, String modifyAdmin) {
         super(username, password, useYN, lastLoginDate, roles);
         this.id = id1;
@@ -54,7 +54,7 @@ public class Admin extends User {
     }
 
     public static Admin createSuperAdmin(AdminCreateDto dto, String password){
-        return Admin.builder()
+        return Admin.adminBuilder()
                 .email(dto.getEmail())
                 .code(AdminCode.HEAD_OFFICE)
                 .username(dto.getUsername())
@@ -67,7 +67,7 @@ public class Admin extends User {
     }
 
     public static Admin createBranchAdmin(AdminCreateDto dto, String password){
-        return Admin.builder()
+        return Admin.adminBuilder()
                 .email(dto.getEmail())
                 .code(AdminCode.HEAD_OFFICE)
                 .username(dto.getUsername())

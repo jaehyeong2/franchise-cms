@@ -58,7 +58,7 @@ public class SalesMan extends User {
     @Comment("수정한 관리자")
     private String modifyAdmin;
 
-    @Builder
+    @Builder(builderMethodName = "salesManBuilder")
     public SalesMan(String username, String password, String useYN, LocalDateTime lastLoginDate, List<Role> roles, String salesCode, Branch branch, String salesName, String salesSsn, String salesPhone, String salesEmail, String salesBankName, String salesAccountName, String salesAccountNum, Double salesRate, String createAdmin, String modifyAdmin) {
         super(username, password, useYN, lastLoginDate, roles);
         this.salesCode = salesCode;
