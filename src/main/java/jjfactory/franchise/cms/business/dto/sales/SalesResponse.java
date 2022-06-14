@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class SalesDto {
+public class SalesResponse {
     private Long id;
     private String branchName;
     private String salesName;
@@ -25,7 +25,7 @@ public class SalesDto {
     private String username;
     private String useYN;
 
-    public SalesDto(SalesMan salesMan){
+    public SalesResponse(SalesMan salesMan){
         this.id =salesMan.getId();
         this.useYN = salesMan.getUseYN();
         this.username = salesMan.getUsername();
