@@ -1,9 +1,9 @@
 package jjfactory.franchise.cms.business.domain.sales;
 
-import jjfactory.franchise.cms.business.domain.BaseTimeEntity;
 import jjfactory.franchise.cms.business.domain.branch.Branch;
 import jjfactory.franchise.cms.business.domain.user.Role;
 import jjfactory.franchise.cms.business.domain.user.User;
+import jjfactory.franchise.cms.business.dto.sales.SalesManDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -59,8 +59,9 @@ public class SalesMan extends User {
     private String modifyAdmin;
 
     @Builder(builderMethodName = "salesManBuilder")
-    public SalesMan(String username, String password, String useYN, LocalDateTime lastLoginDate, List<Role> roles, String salesCode, Branch branch, String salesName, String salesSsn, String salesPhone, String salesEmail, String salesBankName, String salesAccountName, String salesAccountNum, Double salesRate, String createAdmin, String modifyAdmin) {
-        super(username, password, useYN, lastLoginDate, roles);
+    public SalesMan(String username, String password, String useYN, LocalDateTime lastLoginDate, List<Role> roles, Long id, String salesCode, Branch branch, String salesName, String salesSsn, String salesPhone, String salesEmail, String salesBankName, String salesAccountName, String salesAccountNum, Double salesRate, String createAdmin, String modifyAdmin, Boolean usedYN) {
+        super(username, password, usedYN, lastLoginDate, roles);
+        this.id = id;
         this.salesCode = salesCode;
         this.branch = branch;
         this.salesName = salesName;
@@ -73,5 +74,23 @@ public class SalesMan extends User {
         this.salesRate = salesRate;
         this.createAdmin = createAdmin;
         this.modifyAdmin = modifyAdmin;
+    }
+
+    public static SalesMan enroll(SalesManDto dto,Branch branch,String createAdmin){
+        return salesManBuilder()
+                .salesCode(dto.getSalesCode())
+                .branch(branch)
+                .salesAccountNum(dto.getSalesAccNum())
+                .salesAccountName(dto.getSalesAccName())
+                .salesBankName(dto.getSalesBank())
+                .createAdmin(createAdmin)
+                .salesCode(dto.getSalesCode())
+                .salesEmail(dto.getSalesEmail())
+                .salesPhone(dto.getSalesPhone())
+                .salesName(dto.getSalesName())
+                .salesRate(dto.getSalesRate())
+                .salesSsn(dto.getSalesSsn())
+                .usedYN(true)
+                .build();
     }
 }

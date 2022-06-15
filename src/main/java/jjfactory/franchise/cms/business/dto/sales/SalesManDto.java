@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class SalesDto {
+public class SalesManDto {
     private Long id;
+    private Long branchId;
     private String branchName;
     private String salesName;
     private String salesPhone;
@@ -18,14 +19,14 @@ public class SalesDto {
     private String salesEmail;
     private String lastLoginDate;
     private String createdDate;
-    private String salesSocNo;
+    private String salesSsn;
     private String salesCode;
     private String salesAccName;
-    private String salesAccNo;
+    private String salesAccNum;
     private String username;
     private String useYN;
 
-    public SalesDto(SalesMan salesMan){
+    public SalesManDto(SalesMan salesMan){
         this.id =salesMan.getId();
         this.useYN = salesMan.getUseYN();
         this.username = salesMan.getUsername();
@@ -40,6 +41,6 @@ public class SalesDto {
 //        this.salesSocNo = salesMan.getSalesSocNo();
         this.salesCode = salesMan.getSalesCode();
         this.salesAccName = salesMan.getSalesAccountName();
-        this.salesAccNo = salesMan.getSalesAccountNum();
+        this.salesAccNum = salesMan.getSalesAccountNum();
     }
 }

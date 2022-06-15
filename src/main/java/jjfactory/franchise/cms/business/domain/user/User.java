@@ -23,7 +23,7 @@ public class User extends BaseTimeEntity{
     private String username;
     private String password;
 
-    private String useYN;
+    private Boolean usedYN;
 
     private LocalDateTime lastLoginDate;
 
@@ -32,16 +32,16 @@ public class User extends BaseTimeEntity{
     private List<Role> roles = new ArrayList<>();
 
     @Builder
-    public User(String username, String password, String useYN, LocalDateTime lastLoginDate, List<Role> roles) {
+    public User(String username, String password, Boolean usedYN, LocalDateTime lastLoginDate, List<Role> roles) {
         this.username = username;
         this.password = password;
-        this.useYN = useYN;
+        this.usedYN = usedYN;
         this.lastLoginDate = lastLoginDate;
         this.roles = roles;
     }
 
 
     public void delete(){
-        this.useYN = "N";
+        this.usedYN = false;
     }
 }
