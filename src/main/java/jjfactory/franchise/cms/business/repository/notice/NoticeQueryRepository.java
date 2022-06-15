@@ -6,6 +6,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jjfactory.franchise.cms.business.dto.notice.NoticeResponse;
 import jjfactory.franchise.cms.global.dto.QueryModel;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -40,7 +41,7 @@ public class NoticeQueryRepository {
 
 
     private BooleanExpression query(String query) {
-        if (query == null) return null;
+        if(StringUtils.isEmpty(query)) return null;
         return notice.content.contains(query)
                 .or(notice.title.contains(query))
                 .or(notice.createAdmin.name.contains(query));
